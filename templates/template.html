@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+   <head>
+      <script>
+      document.addEventListener('DOMContentLoaded', function() {
+      var url = 'http://127.0.0.1:5001/GUI-is-still-open';
+      fetch(url, { mode: 'no-cors'});
+      setInterval(function(){ fetch(url, { mode: 'no-cors'});}, 5000)();
+      });
+      </script>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Flask Parent Template</title>
+      <link rel="icon" href="{{ url_for('static', filename='media/icon.png') }}" type="image/png"/>
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/template.css') }}">
+      <style>
+       body {
+         background-image: url("static/media/DEBELpage.jpg");
+         background-repeat: no-repeat;
+         background-attachment: fixed;
+         background-position: center;
+            }
+        h1 {
+        text-align: left;
+            }
+      </style>
+   </head>
+   <body>
+      <header>
+         <div class="container">
+            <h1 class="logo" style="text-align:left">Defence Bioengineering and Electromedical Laboratory</h1>
+            <strong>
+               <nav>
+                  <ul class="menu">
+                     <li><a href="{{ url_for('home') }}">Home</a></li>
+                     <li><a href="{{ url_for('line_chart') }}">Charts</a></li>
+                     <li><a href="{{ url_for('about') }}">About Us</a></li>
+                  </ul>
+               </nav>
+            </strong>
+         </div>
+      </header>
+      {% block content %}
+      {% endblock %}
+   </body>
+</html>
